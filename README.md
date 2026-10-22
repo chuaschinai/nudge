@@ -1,5 +1,8 @@
 # Nudge
 
+[![Build](https://github.com/chuaschinai/nudge/actions/workflows/release-windows.yml/badge.svg?branch=main)](https://github.com/chuaschinai/nudge/actions/workflows/release-windows.yml)
+[![Release](https://img.shields.io/github/v/release/chuaschinai/nudge?label=release)](https://github.com/chuaschinai/nudge/releases/latest)
+
 Nudge is an open-source application that turns a phone into a mouse and keyboard for a computer on the same local Wi-Fi network.
 
 ## Overview

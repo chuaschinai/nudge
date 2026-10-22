@@ -2,6 +2,8 @@ name: Build Windows release
 
 on:
   push:
+    branches:
+      - main
     tags:
       - "v*"
   workflow_dispatch:
@@ -25,10 +27,11 @@ jobs:
         shell: pwsh
         run: |
           if ("${{ github.ref_type }}" -eq "tag") {
-            "NUDGE_VERSION=${{ github.ref_name }}".TrimStart("v") >> $env:GITHUB_ENV
+            $version = "${{ github.ref_name }}".Substring(1)
           } else {
-            "NUDGE_VERSION=dev" >> $env:GITHUB_ENV
+            $version = "dev"
           }
+          "NUDGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
       - name: Install dependencies
         run: >-
@@ -51,6 +54,8 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
+          fail_on_unmatched_files: true
+          overwrite_files: true
           files: dist/Nudge.exe
 
       - name: Upload build artifact
