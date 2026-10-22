@@ -1,0 +1,17 @@
+# Local settings and device whitelist
+config.json
+
+# Local-only documentation and dependency notes
+DECISIONS.md
+requirements.txt
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# PyInstaller/build output
+build/
+dist/
+*.spec

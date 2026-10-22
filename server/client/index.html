@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+    <meta name="application-name" content="Nudge" />
+    <meta name="theme-color" content="#171717" />
+    <link rel="icon" href="/nudge-logo.svg" type="image/svg+xml" />
+    <title>Nudge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div id="connectionStatus" class="connection-status" role="status" aria-live="polite"></div>
+    <main class="app">
+      <section id="controlPage" class="pad-shell" aria-label="Touchpad and mouse buttons">
+        <div id="touchpad" class="touchpad" aria-label="Touchpad">
+          <img class="touchpad-logo" src="/nudge-logo.svg" alt="" aria-hidden="true" />
+          <div id="touchIndicator" class="touch-indicator" aria-hidden="true"></div>
+          <div id="sideScroll" class="side-scroll" role="scrollbar" aria-label="Vertical scroll wheel" aria-orientation="vertical" tabindex="0">
+            <span></span>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="leftButton" type="button" aria-label="Left click" title="Left click"><i class="iconoir-mouse-button-left" aria-hidden="true"></i></button>
+          <button id="middleButton" type="button" class="secondary" aria-label="Middle click" title="Middle click"><i class="iconoir-pc-mouse" aria-hidden="true"></i></button>
+          <button id="rightButton" type="button" aria-label="Right click" title="Right click"><i class="iconoir-mouse-button-right" aria-hidden="true"></i></button>
+        </div>
+      </section>
+      <section id="settingsPage" class="settings-panel" aria-label="Settings">
+        <header class="settings-header">
+          <h2>Settings</h2>
+          <div class="settings-divider" aria-hidden="true"></div>
+        </header>
+        <div class="settings-content">
+          <label for="sensitivity">
+            <span>Mouse sensitivity</span>
+            <span id="sensitivityValue"></span>
+          </label>
+          <input id="sensitivity" type="range" min="0.5" max="3" step="0.1" />
+          <label for="scrollSensitivity">
+            <span>Scroll sensitivity</span>
+            <span id="scrollSensitivityValue"></span>
+          </label>
+          <input id="scrollSensitivity" type="range" min="0.1" max="3" step="0.1" />
+          <label class="setting-toggle" for="invertScroll">
+            <span>Invert scroll direction</span>
+            <input id="invertScroll" type="checkbox" />
+          </label>
+          <label class="setting-toggle" for="sideScrollEnabled">
+            <span>Show the touchpad scroll wheel</span>
+            <input id="sideScrollEnabled" type="checkbox" />
+          </label>
+        </div>
+        <footer class="settings-footer">
+          <button id="disconnectButton" class="disconnect-button" type="button">Disconnect</button>
+        </footer>
+      </section>
+
+      <nav id="toolbar" class="mode-tabs" aria-label="Controls">
+        <div class="mode-group" role="group" aria-label="Modes">
+          <button id="mouseTab" class="icon-button mode-tab" type="button" aria-label="Mouse mode" title="Mouse" aria-selected="true"><i class="iconoir-pc-mouse" aria-hidden="true"></i></button>
+          <button id="keyboardTab" class="icon-button mode-tab" type="button" aria-label="Keyboard mode" title="Keyboard" aria-selected="false"><i class="iconoir-chat-bubble" aria-hidden="true"></i></button>
+          <button id="menuButton" class="icon-button mode-tab" type="button" aria-label="Settings" title="Settings" aria-selected="false">
+            <i class="iconoir-settings" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="mode-group" role="group" aria-label="Helpers">
+          <button id="pasteButton" class="icon-button mode-tab" type="button" aria-label="Paste text from phone" title="Paste text"><i class="iconoir-paste-clipboard" aria-hidden="true"></i></button>
+          <button id="escapeButton" class="icon-button mode-tab escape-button" type="button" data-key="esc" aria-label="Escape" title="Escape">ESC</button>
+          <button id="refreshButton" class="icon-button mode-tab escape-button" type="button" data-key="f5" aria-label="F5" title="F5">F5</button>
+        </div>
+      </nav>
+      <label class="sr-only" for="textInput">Type to send text to the computer</label>
+      <input id="textInput" class="keyboard-input" type="text" autocomplete="off"
+             autocapitalize="off" spellcheck="false" aria-label="Text to send to the computer" />
+    </main>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
